@@ -14,6 +14,8 @@ function agregarAmigo() {
     if(document.getElementById('amigo').value == ''){
         alert('Por favor ingrese un nombre');
         return;
+    }else if(friendsList.includes(document.getElementById('amigo').value)){//verify if one element already exist in the list, for not add duplicate elements
+        alert('Este amigo ya fue agregado a la lista, por favor agrega una persona diferente')
     }else{
         friendsList.push(document.getElementById('amigo').value);
         document.getElementById('amigo').value = '';
@@ -49,3 +51,17 @@ function mostrarAmigos(){
  * then, we use the random index to get the name of the friend. 
  * finally, we need to update the html with the name of the friend.
  */
+
+
+function sortearAmigo(){
+
+    if(friendsList.length == 0){
+        alert('De momento no hay amigos en la lista, por favor agrega algunos amigos para realizar el sorteo'); 
+        return; 
+    }
+
+    let randomIndex = Math.floor(Math.random() * friendsList.length);
+    let randomFriend = friendsList[randomIndex]; 
+
+    document.getElementById('resultado').innerHTML = `El amigo sorteado es: ${randomFriend}`; 
+}
